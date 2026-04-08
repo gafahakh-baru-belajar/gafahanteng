@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Website Gafa</title>
+
+<style>
+body {
+    margin:0;
+    font-family: Arial;
+    background:#0f172a;
+    color:white;
+}
+
+/* navbar */
+#nav {
+    background:#020617;
+    padding:10px;
+    text-align:center;
+    font-weight:bold;
+}
+
+/* section */
+.section {
+    padding:20px;
+}
+
+/* chat */
+#chat {
+    height:200px;
+    overflow:auto;
+    border:1px solid #555;
+    padding:10px;
+}
+
+/* input */
+#inputBox {
+    display:flex;
+}
+
+input {
+    flex:1;
+    padding:10px;
+}
+
+button {
+    padding:10px;
+    background:#22c55e;
+    border:none;
+}
+</style>
+</head>
+
+<body>
+
+<div id="nav">🌐 Website Gafa</div>
+
+<div class="section">
+<h2>👋 Tentang Saya</h2>
+<p>Halo! Saya sedang belajar coding dan membuat game 🎮</p>
+</div>
+
+<div class="section">
+<h2>🎮 Game Saya</h2>
+<p>Saya sedang membuat game battle royale sederhana 😎🔥</p>
+</div>
+
+<div class="section">
+<h2>🤖 AI Chat</h2>
+
+<div id="chat"></div>
+
+<div id="inputBox">
+<input id="input" placeholder="Tanya sesuatu...">
+<button onclick="kirim()">Kirim</button>
+</div>
+
+</div>
+
+<script>
+function tambah(text){
+    let chat = document.getElementById("chat");
+    chat.innerHTML += "<p>" + text + "</p>";
+    chat.scrollTop = chat.scrollHeight;
+}
+
+function ai(input){
+    input = input.toLowerCase();
+
+    if(input.includes("halo")) return "Halo juga! 😄";
+    if(input.includes("nama")) return "Nama saya AI Gafa 🤖";
+    if(input.includes("game")) return "Game saya sedang dikembangkan 🔥";
+    if(input.includes("ai")) return "AI itu teknologi pintar 🧠";
+
+    return "Saya masih belajar 😅";
+}
+
+function kirim(){
+    let input = document.getElementById("input");
+    let text = input.value;
+
+    if(text == "") return;
+
+    tambah("🧑: " + text);
+    input.value = "";
+
+    setTimeout(()=>{
+        tambah("🤖: " + ai(text));
+    }, 500);
+}
+</script>
+
+</body>
+  </html>
